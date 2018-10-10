@@ -1,0 +1,123 @@
+[
+    {
+        "intent": "open",
+        "sentence": "open website"
+    },
+    {
+        "intent": "open",
+        "sentence": "show me website"
+    },
+    {
+        "intent": "open",
+        "sentence": "give me more information"
+    },
+    {
+        "intent": "open",
+        "sentence": "website"
+    },
+    {
+        "intent": "open",
+        "sentence": "web"
+    },
+    {
+        "intent": "open",
+        "sentence": "tell me more"
+    },
+
+    {
+        "intent": "contact",
+        "sentence": "connect me with"
+    },
+    {
+        "intent": "contact",
+        "sentence": "connect"
+    },
+    {
+        "intent": "contact",
+        "sentence": "give me the phone number"
+    },
+    {
+        "intent": "contact",
+        "sentence": "i want to talk with"
+    },
+    {
+        "intent": "contact",
+        "sentence": "how to contact"
+    },
+    {
+        "intent": "contact",
+        "sentence": "contact"
+    },
+    {
+        "intent": "contact",
+        "sentence": "talk to"
+    },
+    {
+        "intent": "location",
+        "sentence": "how can i reach"
+    },
+    {
+        "intent": "location",
+        "sentence": "how can i reach"
+    },
+    {
+        "intent": "location",
+        "sentence": "navigate me to"
+    },
+    {
+        "intent": "location",
+        "sentence": "how to go"
+    },
+    {
+        "intent": "location",
+        "sentence": "how to get"
+    },
+    {
+        "intent": "location",
+        "sentence": "location"
+    },
+    {
+        "intent": "location",
+        "sentence": "take me to"
+    },
+    {
+        "intent": "location",
+        "sentence": "google map"
+    },
+    {
+        "intent": "location",
+        "sentence": "google maps"
+    },
+    {
+        "intent": "location",
+        "sentence": "google maps link"
+    },
+    {
+        "intent": "baike",
+        "sentence": "baike link"
+    },
+    {
+        "intent": "baike",
+        "sentence": "baidu baike"
+    },
+    {
+        "intent": "baike",
+        "sentence": "baike"
+    },
+    {
+        "intent": "phone",
+        "sentence": "phone"
+    },{
+        "intent": "phone",
+        "sentence": "phones"
+    },
+    {
+        "intent": "phone",
+        "sentence": "bot phone"
+    },
+    {
+        "intent": "phone",
+        "sentence": "show me the bot phone"
+    }
+
+]
