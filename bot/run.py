@@ -6,7 +6,7 @@ from bot.secret_weapon.action_models import action_train, action_predict
 #from bot.secret_weapon.seq2seq_models import trainIters, Lang,readLangs,EncoderRNN,AttnDecoderRNN,predictReply
 from bot.secret_weapon.bot_seq2seq import pre_train_bot,predictReplyX,bot_predict_reply,bot_predict_sim_reply
 #from bot.secret_weapon.question_siamese import return_highsim_sentence,siamese_train
-from bot.secret_weapon.sim_sentence_api import simhash_x,simhash_reply
+from bot.secret_weapon.sim_sentence_api import simhash_x,jaro_winkler_x
 from bot.secret_weapon.bot_doc2vec_models import doc2vec_sim_reply,doc2vec_train
 from bot.knowledge_graph.BotKGInferMain import botKGInferAllLabel
 import jieba
@@ -44,9 +44,15 @@ def run_bot(sentence):
         if reply == "error":
             #reply = bot_predict_sim_reply(str(sentence))
             #sim_sentence = return_highsim_sentence(str(sentence))
-            sim_sentence = simhash_x(sentence)
+            #sim_sentence = simhash_x(sentence)
             #reply = bot_predict_reply(str(sim_sentence))
             #sim_sentence = doc2vec_sim_reply(sentence)
+            # split sentence length
+            sent_len = len(str(sentence).strip())
+            if sent_len < 9:sim_sentence = jaro_winkler_x(str(sentence))
+            elif sent_len > 8 and sent_len < 100:sim_sentence = lsi_sim_sentence(str(sentence))
+            else:sim_sentence = simhash_x(str(sentence))
+            print(sim_sentence)
             reply = bot_predict_reply(str(sim_sentence))
             if reply == "error":
                 reply = "Sorry, I can not understand this topic very well, can you change your topic?"

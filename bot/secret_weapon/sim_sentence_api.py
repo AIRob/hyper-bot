@@ -73,34 +73,21 @@ def simhash_x(sentence):
         if j == indx:
             print (f'{res}:{sim_list[indx]}')
             return res
-            '''
-            if res is not None:return res
-            else:return sentence
-            '''
 
-def simhash_reply(sentence):
-
-    '''
+def jaro_winkler_x(sentence):
     data = read_datas()
-    min_dis = 0.1
     sim_list = []
     for i in range(47592):
         str1 = data[i].strip()
         sd = SimWord()
-        jwres = sd.simhash_func(str1,sentence)
+        jwres = sd.jaro_winkler_func(str1,sentence)
         sim_list.append(jwres)
-    indx = np.argmin(sim_list)
+    indx = np.argmax(sim_list)
     for j in range(47592):
         res = data[j].strip()
         if j == indx:
             print (f'{res}:{sim_list[indx]}')
-            #return res
-            print(bot_predict_reply(res))
-            return bot_predict_reply(res)
-        else:
-            return 'error'
-    '''
-    return sentence
+            return res
     
 def main():
     str1 = '高血压，动脉硬化失眠.，怎么办？'

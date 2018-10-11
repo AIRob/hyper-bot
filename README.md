@@ -1,6 +1,6 @@
 # hyper bot
 
-bot using PyTorch + Scrapy Spider + Neo4j + attention seq2seq
+bot using PyTorch + Sentence Similarity + Neo4j + Attention seq2seq
 
 sentence similar person is a problem
 
@@ -17,10 +17,10 @@ sentence similar person is a problem
 * [tensorflow](http://www.tensorfly.cn/)
 * [keras](https://keras.io/)(https://keras-cn.readthedocs.io/en/latest/)
 
-* [scrapy]
-* [mongodb]
+* [scrapy](https://doc.scrapy.org/en/latest/)
+* [mongodb](http://www.mongodb.org/)
 * [neo4j](https://neo4j.com/)
-* [urllib]
+* [urllib](https://docs.python.org/3/library/urllib.html)
 
 * [Flask](http://flask.pocoo.org/)
 * [Requests](flask_wtf)
