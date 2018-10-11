@@ -144,8 +144,8 @@ def dsl_protocol(intent, sentence):
     """domain specific language for the bot"""
     rep = {}
     rep["text"] = "none"
-    key = {'contact':'You can send email to this email id hr@gaojihealth.com', 'baike':'https://baike.baidu.com/item/高济/47725', 'phone':'010 - 56939988'
-       , 'open':'http://www.gaojimed.com/', 'location':'北京市东城区环球贸易中心B座16层'}
+    key = {'contact':'You can send email to this email id hr@airob.com', 'baike':'https://baike.baidu.com/item/智能机器人/3856', 'phone':'010 - xxxxxxxx'
+       , 'open':'http://www.airob.com/', 'location':'北京市海淀区中关村'}
     if intent != "none":
         rep["text"] = random.choice(["check this out:", "here you go:", "I found this:"]) + key[intent]
     return rep["text"]
