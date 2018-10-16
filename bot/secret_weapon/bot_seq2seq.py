@@ -12,7 +12,6 @@ import itertools
 import random
 import math
 from tqdm import tqdm
-#from bot.secret_weapon.question_siamese import return_highsim_sentence
 
 
 USE_CUDA = torch.cuda.is_available()
@@ -769,7 +768,7 @@ def runTestX(pair,n_layers, hidden_size, reverse, modelFile, beam_size, inp, cor
     if inp:
         return predictReply(pair,encoder, decoder, voc, beam_size)
     else:
-        evaluateRandomly(encoder, decoder, voc, pairs, reverse, beam_size, 20)
+        return evaluateRandomly(encoder, decoder, voc, pairs, reverse, beam_size, 20)
 
 def bot_predict_reply(sentence):
     modelFile = 'bot/brain/model/hyperqas/1-1_512/10000_backup_bidir_model.tar'

@@ -4,7 +4,6 @@ import numpy as np
 import math
 import Levenshtein as ls
 import pandas as pd 
-#from bot.secret_weapon.bot_seq2seq import bot_predict_reply
 
 
 class SimWord(object):

@@ -3,13 +3,14 @@ import sys
 import json
 import requests
 from flask import Flask, request,render_template, redirect
-from bot.run import run_bot,run_bot_pre,action_train_pre
+from bot.run import run_bot,run_bot_pre,action_train_pre,run_action_bot_pre
 from templates.forms import InputForm
-from bot.secret_weapon.bot_seq2seq import bot_predict_reply,pre_train_bot,bot_predict_sim_reply
-#from bot.secret_weapon.question_siamese import siamese_train,return_highsim_sentence
-from bot.secret_weapon.sim_sentence_api import simhash_x,simhash_reply
+from bot.secret_weapon.bot_seq2seq import bot_predict_reply,bot_predict_replyx,pre_train_bot,bot_predict_sim_reply
+from bot.secret_weapon.question_siamese import siamese_train,return_highsim_sentence
+from bot.secret_weapon.sim_sentence_api import simhash_x
 from bot.secret_weapon.bot_doc2vec_models import doc2vec_sim_reply,doc2vec_train
-
+from bot.secret_weapon.hyper_doc2vec_models import hyper_doc2vec_train,hyper_doc2vec_predict
+from bot.secret_weapon.lsi_sentence_sim import lsi_sim_sentence,lsi_model
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = '180709aigj'
@@ -48,16 +49,20 @@ def log(message):
 
 if __name__ == '__main__':
     #app.debug = True
-    #doc2vec_train()
     #run_bot_pre()
-    #pre_train_bot()
-    
+    '''
+    action_train_pre()
+    hyper_doc2vec_train()
+    doc2vec_train()
+    pre_train_bot()
+    '''
     #siamese_train()
-    #action_train_pre()
+    #pre_train_bot()
+    #hyper_doc2vec_train()
     #sentence = '高血压心脏病喝什么茶最好'
     sentence = '血脂稠头晕高血压怎么食疗？'
     print(bot_predict_reply(sentence))
-    #sentence2 = '高血压？怎么办失眠'
+    sentence2 = '高血压？怎么办失眠'
     
     #print(bot_predict_sim_reply(str(sentence2)))
     #print(simhash_reply(str(sentence2)))
@@ -70,4 +75,13 @@ if __name__ == '__main__':
     #sim_sent = doc2vec_sim_reply(sentence2)
     #print(sim_sent)
     #print(bot_predict_reply(str(sim_sentence)))
+    sim_sentence = hyper_doc2vec_predict(sentence2)
+    print(sim_sentence)
+    reply = bot_predict_reply(str(sim_sentence))
+    print(reply)
+    sim_sentence2 = return_highsim_sentence(sentence2)
+    print(sim_sentence2)
+    reply2 = bot_predict_reply(str(sim_sentence2))
+    print(reply2)
+    
     app.run()#

@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 from __future__ import unicode_literals, print_function, division
 from time import time
 import pandas as pd
@@ -314,16 +313,6 @@ def return_highsim_sentence(sentence):
     embedding_dict = {}
     with open('bot/datasets/bot_cut_question.txt','r',encoding='utf-8') as data_file:
         data = data_file.readlines()  
-    '''
-    q_len_tmp = []
-    csv_lists = []
-    for i in range(47592):
-      
-        sen1 = 'input("请输入句子1: ")'
-        sen2 = 'input("请输入句子2: ")'
-    '''
-    #sen2 = '高血压失眠怎么办？'
-    #sen2 = '高血压与失眠有关?吗？'
     dataframe = pd.DataFrame(
         {'question1': [data[i] for i in range(47592)], 'question2': [" ".join(jieba.lcut(sentence)) for i in range(47592)]})
 
@@ -334,13 +323,6 @@ def return_highsim_sentence(sentence):
     test_df = pd.read_csv(TEST_CSV)
     for q in ['question1', 'question2']:
         test_df[q + '_n'] = test_df[q]
-    '''
-    # 读取并加载测试集
-    TEST_CSV = './data/hyper_bot_test_data.csv'
-    test_df = pd.read_csv(TEST_CSV,encoding='gbk')
-    for q in ['question1', 'question2']:
-        test_df[q + '_n'] = test_df[q]
-    '''
     # 将测试集词向量化
     test_df, embeddings = make_w2v_embeddings(embedding_dict, test_df, embedding_dim=embedding_dim)
     
@@ -360,20 +342,19 @@ def return_highsim_sentence(sentence):
     #prediction = as_num(prediction)
     #print(prediction)
     prediction_list = prediction.tolist()
-    max_pred = 0.95
+    max_pred = 0.1
+    indx = 0
     for i in range(len(prediction_list)):
         curr_pred = float(as_num(float(prediction_list[i][0])))
-        if curr_pred > 0.90 and curr_pred < 1.0:
-            if curr_pred > max_pred:
-                max_pred = curr_pred
-                print(curr_pred)
-                #print(test_df.iloc[i])
-                #print(test_df.iloc[i]['question1'])
-                sim_res = ''.join(test_df.iloc[i]['question1'].split(" "))
-                print(sim_res)
-                return sim_res
-            else:
-                return sentence
+        #if curr_pred > 0.90 and curr_pred < 1.0:
+        if curr_pred > max_pred and curr_pred < 0.99:
+            max_pred = curr_pred
+            indx = i
+    
+    sim_res = ''.join(test_df.iloc[indx]['question1'].split(" "))
+    #return sim_res
+    res = ''.join(jieba.lcut(sim_res.strip()))
+    return res
 
 def as_num(x):
     y='{:.5f}'.format(x) # 5f表示保留5位小数点的float型
